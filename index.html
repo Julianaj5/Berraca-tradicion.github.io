@@ -1,0 +1,132 @@
+<title>Menú Berraca Tradición</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Dancing+Script:wght@600&display=swap">
+<style>
+/* Layout: wine splash page, cream welcome page, sticky category strip, then one band per category (photo beside its price list on wide screens, stacked on phones), closing wine band. */
+:root{
+  --paper:#f4ecdb; --card:#fbf6ea; --fg:#3a2f29; --muted:#7a6a5e; --line:#dccdb2;
+  --wine:#6e1b34; --on-wine:#f4ecdb; --accent:#6e1b34; --chip:#e9dcc3; --nav:#f4ecdb; --gold:#d9a441;
+  --display:'Playfair Display','Georgia',serif; --body:'Figtree','Segoe UI','Helvetica Neue',Arial,sans-serif; --script:'Dancing Script','Segoe Script',cursive;
+  --bg:var(--paper);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#230c14; --card:#2e121c; --fg:#f1e6d0; --muted:#bba98f; --line:#4a2230; --accent:#ecd9b8; --chip:#3b1825; --nav:#230c14; --bg:var(--paper); color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#230c14; --card:#2e121c; --fg:#f1e6d0; --muted:#bba98f; --line:#4a2230; --accent:#ecd9b8; --chip:#3b1825; --nav:#230c14; --bg:var(--paper); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.45 var(--body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--wine);z-index:10}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:820px;margin:0 auto}
+a{color:inherit}
+/* wine pages */
+.wine{position:relative;background:var(--wine);color:#f7efe0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.wine::before{content:"";position:absolute;inset:14px;border:1px solid var(--gold);pointer-events:none}
+.splash{padding-block:72px 64px}
+.splash img{width:min(70vw,290px);height:auto;display:block}
+.menu-t{font:800 clamp(46px,12vw,64px)/1 var(--display);margin:34px 0 0;color:#f7efe0}
+.rule{display:flex;align-items:center;gap:12px;width:min(60vw,230px);margin:22px auto 0;color:var(--gold)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:currentColor;opacity:.8}
+.rule i{width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+.idx{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px;margin:22px 0 0;padding:0;list-style:none;font:600 12px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.idx a{color:#e9dcc3;text-decoration:none;padding:4px 0}
+.idx a:hover,.idx a:focus-visible{color:var(--gold);outline:none}
+.idx li+li::before{content:"·";margin-right:10px;color:#e9dcc3}
+/* welcome page (fixed cream, like the printed page) */
+.cover{background:#f4ecdb;color:#3a2f29;text-align:center;padding-block:56px 52px}
+.cover img{width:min(48vw,190px);height:auto;display:block;margin:0 auto 26px}
+.cover h1{font:800 clamp(46px,13vw,72px)/.98 var(--display);color:#6e1b34;margin:0;text-wrap:balance}
+.cover p.body{margin:20px auto 0;max-width:30em;font-size:17px;line-height:1.55}
+.cover p.body+p.body{margin-top:12px}
+.sign{font:600 clamp(26px,7vw,34px)/1.2 var(--script);color:#6e1b34;margin:28px 0 0}
+.cv-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px auto 22px;max-width:16em;color:#6e1b34}
+.cv-rule::before,.cv-rule::after{content:"";height:1px;background:currentColor;flex:1;opacity:.7}
+.cv-rule i{width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+.go{display:inline-block;color:#6e1b34;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid #b0553a;padding-bottom:2px}
+.go:hover,.go:focus-visible{color:#b0553a;outline:none}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--fg);font-weight:600;font-size:14px;padding:7px 14px;border-radius:999px;background:var(--chip)}
+nav a:hover,nav a:focus-visible{background:var(--wine);color:var(--on-wine);outline:none}
+main{padding-block:8px 48px}
+.sec{padding-top:40px;scroll-margin-top:64px}
+.sec h2{font:800 clamp(28px,6.5vw,36px)/1.1 var(--display);color:var(--accent);margin:0;padding-bottom:8px;border-bottom:2px solid var(--wine);text-wrap:balance}
+:root[data-theme="dark"] .sec h2{border-color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sec h2{border-color:var(--gold)}}
+/* photo + list rows */
+.row{display:grid;gap:14px;margin-top:16px}
+.row>*{min-width:0}
+.pic{display:flex;flex-direction:column;align-items:center;gap:10px}
+.pic img{display:block;max-width:100%;height:auto}
+.pic img.frame{width:100%;max-width:420px;border-radius:12px}
+.pic img.cut{max-height:260px;width:auto}
+.pic img.frame.port{max-width:250px}
+.pic.duo{flex-direction:row;justify-content:center;align-items:flex-end}
+.pic.duo img{max-height:230px;max-width:48%}
+.sub{margin:18px 0 0;font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.row>div:last-child>.sub:first-child{margin-top:0}
+@media (min-width:640px){
+ .row{grid-template-columns:230px minmax(0,1fr);gap:32px;align-items:start}
+ .row.mid{align-items:center}
+ .pic img.cut{max-height:340px}
+ .pic.duo{flex-direction:column;align-items:center}
+ .pic.duo img{max-width:100%;max-height:230px}
+}
+.list{list-style:none;margin:0;padding:0}
+.item{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.info{min-width:0;flex:1}
+.info h3{margin:0;font-size:17px;font-weight:700;line-height:1.25}
+.info p{margin:3px 0 0;color:var(--muted);font-size:14.5px}
+.prices{flex:none;display:flex;flex-direction:column;gap:3px;align-items:flex-end;text-align:right}
+.pr{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent);font-size:16px}
+.pr b{font-weight:700}
+.pr span{color:var(--muted);font-size:13px;margin-right:8px;font-weight:500}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0;padding:0}
+.chips li{background:var(--chip);border-radius:999px;padding:3px 11px;font-size:13px;font-weight:500}
+.chips.under{justify-content:center;margin-top:0}
+.jt{border-collapse:collapse;margin-top:8px;font-variant-numeric:tabular-nums;font-size:14.5px;width:100%;max-width:360px}
+.jt th,.jt td{padding:5px 0;text-align:right;border-top:1px solid var(--line);color:var(--accent);font-weight:700}
+.jt th:first-child{text-align:left;color:var(--fg);font-weight:500}
+.jt thead th{color:var(--muted);font-size:13px;border-top:0;font-weight:600}
+.note{margin:14px 0 0;font-size:14px;color:var(--muted)}
+.note.foot{font-style:italic;text-align:right}
+.list.solo .item .full{flex:0 0 100%;text-align:center}
+.pf{display:block;width:100%;max-width:460px;margin:14px auto 6px;height:auto;border-radius:12px}
+.ask{font:600 clamp(24px,6.5vw,30px)/1.2 var(--script);color:var(--accent);margin:4px 0 0}
+.banner{margin-top:16px}
+.banner img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 58%;border-radius:14px}
+@media (min-width:640px){.banner img{aspect-ratio:21/9}.list.two{column-count:2;column-gap:36px}.list.two .item{break-inside:avoid}}
+.build{margin-top:18px;padding:18px 20px;border-radius:14px;background:var(--wine);color:var(--on-wine)}
+.build h4{margin:0;font:800 22px/1.15 var(--display)}
+.build p{margin:6px 0 0}
+.build .chips li{background:rgba(244,236,219,.16);color:var(--on-wine)}
+.closing{padding-block:56px;min-height:220px}
+.closing p{margin:0;font-size:13px;color:#e9dcc3;letter-spacing:.04em}
+</style>
+<section class="wine splash pad">
+<img src="img/logo_cream.png" alt="Logo Berraca Tradición" width="926" height="932">
+<div class="menu-t">Menú</div>
+<div class="rule"><i></i></div>
+<ul class="idx"><li><a href="#comer">Empanadas</a></li><li><a href="#calientes">Bebidas</a></li><li><a href="#helados">Helados</a></li><li><a href="#obleas">Obleas</a></li></ul>
+</section>
+<section class="cover pad" aria-label="Bienvenida"><div class="wrap">
+<img src="img/logo_emblem.png" alt="Logo Berraca Tradición" width="874" height="825">
+<h1>Berraca<br>Tradición</h1>
+<p class="body">Bienvenido a nuestra mesa. Aquí cocinamos como en casa, con recetas tradicionales, ingredientes frescos y mucho cariño.</p>
+<p class="body">Somos un homenaje a la mujer santandereana: trabajadora, auténtica y orgullosa de sus raíces. Detrás de cada bocado hay una historia que queremos compartir contigo.</p>
+<p class="sign">¡Aquí la tradición tiene sabor!</p>
+<div class="cv-rule"><i></i></div>
+<a class="go" href="#comer">Ver el menú</a>
+</div></section>
+<nav><div class="wrap pad"><a href="#comer">Para comer</a><a href="#calientes">Bebidas calientes</a><a href="#frias">Bebidas frías</a><a href="#helados">Helados</a><a href="#helado">Bien helado</a><a href="#endulzar">Para endulzar</a><a href="#obleas">Obleas</a></div></nav>
+<main class="pad"><div class="wrap">
+<section class="sec" id="comer"><h2>Para comer</h2><div class="row mid"><div class="pic"><img src="img/empanadas2.jpg" alt="empanadas con ají" width="800" height="533" class="frame" style=""></div><div><h4 class="sub">Empanadas</h4><ul class="list "><li class="item"><div class="info"><h3>Mixtas</h3><p>Arroz, carne y pollo</p></div><div class="prices"><div class="pr"><b>$4.500</b></div></div></li><li class="item"><div class="info"><h3>Carne</h3></div><div class="prices"><div class="pr"><b>$5.500</b></div></div></li><li class="item"><div class="info"><h3>Pollo</h3></div><div class="prices"><div class="pr"><b>$5.500</b></div></div></li><li class="item"><div class="info"><h3>Pollo y queso</h3></div><div class="prices"><div class="pr"><b>$5.500</b></div></div></li><li class="item"><div class="info"><h3>Solo queso</h3></div><div class="prices"><div class="pr"><b>$6.500</b></div></div></li></ul></div></div><div class="row mid"><div class="pic"><img src="img/sandwich.jpg" alt="sándwich a la plancha" width="800" height="450" class="frame" style=""></div><div><h4 class="sub">Para acompañar</h4><ul class="list "><li class="item"><div class="info"><h3>Almojábanas</h3></div><div class="prices"><div class="pr"><b>$3.000</b></div></div></li><li class="item"><div class="info"><h3>Sándwich de pollo</h3></div><div class="prices"><div class="pr"><b>$9.000</b></div></div></li><li class="item"><div class="info"><h3>Palito de queso</h3></div><div class="prices"><div class="pr"><b>$4.000</b></div></div></li><li class="item"><div class="info"><h3>Palito de queso con bocadillo</h3></div><div class="prices"><div class="pr"><b>$5.000</b></div></div></li></ul></div></div></section>
+<section class="sec" id="calientes"><h2>Bebidas calientes</h2><div class="row mid"><div class="pic"><img src="img/cafe_w.png" alt="café con espuma y canela" width="506" height="760" class="cut" style=""></div><div><ul class="list "><li class="item"><div class="info"><h3>Tinto</h3><p>Americano</p></div><div class="prices"><div class="pr"><span>7 oz</span><b>$4.000</b></div><div class="pr"><span>9 oz</span><b>$5.000</b></div></div></li><li class="item"><div class="info"><h3>Tinto con leche</h3><p>Café, latte</p></div><div class="prices"><div class="pr"><span>7 oz</span><b>$5.000</b></div><div class="pr"><span>9 oz</span><b>$6.500</b></div></div></li><li class="item"><div class="info"><h3>Chocolate</h3></div><div class="prices"><div class="pr"><span>7 oz</span><b>$5.000</b></div><div class="pr"><span>9 oz</span><b>$6.500</b></div></div></li><li class="item"><div class="info"><h3>Milo</h3></div><div class="prices"><div class="pr"><span>7 oz</span><b>$7.000</b></div><div class="pr"><span>9 oz</span><b>$8.500</b></div></div></li><li class="item"><div class="info"><h3>Aromáticas</h3></div><div class="prices"><div class="pr"><span>7 oz</span><b>$4.000</b></div><div class="pr"><span>9 oz</span><b>$5.000</b></div></div></li><li class="item"><div class="info"><h3>Agua de panela</h3></div><div class="prices"><div class="pr"><span>7 oz</span><b>$4.000</b></div><div class="pr"><span>9 oz</span><b>$5.000</b></div></div></li><li class="item"><div class="info"><h3>Capuchino</h3></div><div class="prices"><div class="pr"><span>9 oz</span><b>$8.000</b></div></div></li></ul></div></div><p class="note foot">Nota: Cambia tu leche por deslactosada por solo +1.000 adicionales.</p></section>
+<section class="sec" id="frias"><h2>Bebidas frías</h2><div class="row"><div class="pic"><img src="img/granizado.jpg" alt="granizado de maracuyá" width="533" height="800" class="frame port" style=""><ul class="chips under"><li>Maracuyá</li><li>Lulo</li><li>Mango</li><li>Fresa</li><li>Mora</li><li>Guanábana</li><li>Limón</li></ul></div><div><ul class="list "><li class="item"><div class="info"><h3>Granizadas</h3><p>Hielo y pulpa de fruta natural.</p></div><div class="prices"><div class="pr"><span>10 oz</span><b>$10.000</b></div><div class="pr"><span>14 oz</span><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>Malteadas</h3><ul class="chips "><li>Vainilla</li><li>Maracuyá</li><li>Frutos rojos</li><li>Chocolate</li></ul></div><div class="prices"><div class="pr"><span>14 oz</span><b>$14.000</b></div></div></li><li class="item"><div class="info"><h3>Limonadas</h3><ul class="chips "><li>Cereza</li><li>Mango biche</li><li>Limón</li></ul></div><div class="prices"><div class="pr"><span>10 oz</span><b>$9.000</b></div></div></li><li class="item"><div class="info"><h3>Milo frío</h3></div><div class="prices"><div class="pr"><span>10 oz</span><b>$9.000</b></div></div></li><li class="item"><div class="info"><h3>Jugos naturales</h3><table class="jt"><thead><tr><th></th><th>10 oz</th><th>14 oz</th></tr></thead><tbody><tr><th>En agua</th><td>$7.500</td><td>$9.500</td></tr><tr><th>Leche entera</th><td>$8.500</td><td>$10.500</td></tr><tr><th>Leche deslactosada</th><td>$9.500</td><td>$11.500</td></tr></tbody></table></div></li></ul></div></div></section>
+<section class="sec" id="helados"><h2>Helados</h2><ul class="list solo"><li class="item"><div class="info"><h3>Helados caseros y cremosos</h3><p>Con pulpa de fruta natural.</p></div><div class="prices"><div class="pr"><b>$5.000</b></div></div><div class="full"><img src="img/paletas.jpg" alt="paletas de maracuyá, frutos rojos y fresa" width="800" height="533" class="frame pf" style=""><p class="ask">Pregunta por nuestros sabores disponibles</p></div></li></ul></section>
+<section class="sec" id="helado"><h2>Bien helado</h2><div class="row"><div class="pic duo"><img src="img/frappe_w.png" alt="frappé con arequipe" width="570" height="760" class="cut" style=""><img src="img/helado_w.png" alt="copa de helado de maracuyá" width="506" height="760" class="cut" style=""></div><div><ul class="list "><li class="item"><div class="info"><h3>Frappé de café</h3><p>Café, leche, leche condensada y hielo. Finaliza con salsa de arequipe y chantilly.</p></div><div class="prices"><div class="pr"><span>10 oz</span><b>$11.000</b></div><div class="pr"><span>14 oz</span><b>$13.500</b></div></div></li><li class="item"><div class="info"><h3>Frappé de Milo</h3><p>Milo, leche, leche condensada y hielo. Finaliza con salsa de arequipe y chantilly.</p></div><div class="prices"><div class="pr"><span>10 oz</span><b>$11.000</b></div><div class="pr"><span>14 oz</span><b>$13.500</b></div></div></li><li class="item"><div class="info"><h3>Frappé de Oreo</h3><p>Galletas Oreo, leche, leche condensada y hielo. Finaliza con salsa de chocolate y chantilly.</p></div><div class="prices"><div class="pr"><span>10 oz</span><b>$11.000</b></div><div class="pr"><span>14 oz</span><b>$13.500</b></div></div></li><li class="item"><div class="info"><h3>Maracumix</h3><p>Helado de maracuyá con pulpa de maracuyá y leche condensada.</p></div><div class="prices"><div class="pr"><span>1 porción de helado</span><b>$10.000</b></div><div class="pr"><span>2 porciones</span><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>Maracumango</h3><p>Helado de maracuyá con pulpa de maracuyá, trozos de mango y leche condensada.</p></div><div class="prices"><div class="pr"><span>1 porción de helado</span><b>$10.000</b></div><div class="pr"><span>2 porciones</span><b>$13.000</b></div></div></li></ul></div></div></section>
+<section class="sec" id="endulzar"><h2>Para endulzar</h2><div class="row mid"><div class="pic"><img src="img/fresas_w.png" alt="copa de fresas con crema" width="427" height="760" class="cut" style=""></div><div><ul class="list "><li class="item"><div class="info"><h3>Fresas con crema</h3></div><div class="prices"><div class="pr"><b>$12.000</b></div></div></li><li class="item"><div class="info"><h3>Guanabanazo</h3></div><div class="prices"><div class="pr"><span>10 oz</span><b>$9.000</b></div></div></li><li class="item"><div class="info"><h3>Brevas con arequipe y queso</h3></div><div class="prices"><div class="pr"><b>$9.000</b></div></div></li></ul></div></div></section>
+<section class="sec" id="obleas"><h2>Obleas</h2><div class="banner"><img src="img/oblea.jpg" alt="oblea con arequipe, mora y queso" width="800" height="800" class="frame" style=""></div><ul class="list two"><li class="item"><div class="info"><h3>Tradicional</h3><p>Solo arequipe</p></div><div class="prices"><div class="pr"><b>$5.500</b></div></div></li><li class="item"><div class="info"><h3>La Santísima</h3><p>Arequipe y queso</p></div><div class="prices"><div class="pr"><b>$8.000</b></div></div></li><li class="item"><div class="info"><h3>El Cerro</h3><p>Arequipe y mora</p></div><div class="prices"><div class="pr"><b>$8.000</b></div></div></li><li class="item"><div class="info"><h3>La Florideña</h3><p>Arequipe, mora y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Bumanguesa</h3><p>Arequipe, maracuyá y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Sangileña</h3><p>Arequipe, fresa y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Patiamarilla</h3><p>Arequipe, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$11.000</b></div></div></li><li class="item"><div class="info"><h3>La Santandereana</h3><p>Arequipe, brevas y queso</p></div><div class="prices"><div class="pr"><b>$12.000</b></div></div></li><li class="item"><div class="info"><h3>La Garrotera</h3><p>Arequipe, maracuyá, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>La Gironesa</h3><p>Arequipe, mora, chocolate y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>La Berraca</h3><p>Arequipe, mora, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>Oblea cuchareable</h3><p>Arequipe, sabor a elección (mora, maracuyá o fresa), queso, chantilly y trozos de oblea.</p></div><div class="prices"><div class="pr"><b>$14.000</b></div></div></li></ul><div class="build"><h4>Arma tu oblea a tu gusto</h4><p>Base: <b>Arequipe</b></p><ul class="chips "><li>Mora</li><li>Maracuyá</li><li>Fresa</li><li>Queso</li><li>Chantilly</li><li>Chocolate</li></ul></div></section>
+</div></main>
+<section class="wine closing pad" aria-label="Cierre"><p>Precios en pesos colombianos (COP)</p></section>
