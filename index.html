@@ -1,7 +1,14 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6e1b34">
 <title>Menú Berraca Tradición</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Dancing+Script:wght@600&display=swap">
 <style>
+:root{color-scheme:light}
 /* Layout: wine splash page, cream welcome page, sticky category strip, then one band per category (photo beside its price list on wide screens, stacked on phones), closing wine band. */
 :root{
   --paper:#f4ecdb; --card:#fbf6ea; --fg:#3a2f29; --muted:#7a6a5e; --line:#dccdb2;
@@ -9,9 +16,6 @@
   --display:'Playfair Display','Georgia',serif; --body:'Figtree','Segoe UI','Helvetica Neue',Arial,sans-serif; --script:'Dancing Script','Segoe Script',cursive;
   --bg:var(--paper);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#230c14; --card:#2e121c; --fg:#f1e6d0; --muted:#bba98f; --line:#4a2230; --accent:#ecd9b8; --chip:#3b1825; --nav:#230c14; --bg:var(--paper); color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#230c14; --card:#2e121c; --fg:#f1e6d0; --muted:#bba98f; --line:#4a2230; --accent:#ecd9b8; --chip:#3b1825; --nav:#230c14; --bg:var(--paper); color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font:16px/1.45 var(--body);margin:0}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--wine);z-index:10}
@@ -51,8 +55,6 @@ nav a:hover,nav a:focus-visible{background:var(--wine);color:var(--on-wine);outl
 main{padding-block:8px 48px}
 .sec{padding-top:40px;scroll-margin-top:64px}
 .sec h2{font:800 clamp(28px,6.5vw,36px)/1.1 var(--display);color:var(--accent);margin:0;padding-bottom:8px;border-bottom:2px solid var(--wine);text-wrap:balance}
-:root[data-theme="dark"] .sec h2{border-color:var(--gold)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sec h2{border-color:var(--gold)}}
 /* photo + list rows */
 .row{display:grid;gap:14px;margin-top:16px}
 .row>*{min-width:0}
@@ -104,6 +106,8 @@ main{padding-block:8px 48px}
 .closing{padding-block:56px;min-height:220px}
 .closing p{margin:0;font-size:13px;color:#e9dcc3;letter-spacing:.04em}
 </style>
+</head>
+<body>
 <section class="wine splash pad">
 <img src="img/logo_cream.png" alt="Logo Berraca Tradición" width="926" height="932">
 <div class="menu-t">Menú</div>
@@ -130,3 +134,5 @@ main{padding-block:8px 48px}
 <section class="sec" id="obleas"><h2>Obleas</h2><div class="banner"><img src="img/oblea.jpg" alt="oblea con arequipe, mora y queso" width="800" height="800" class="frame" style=""></div><ul class="list two"><li class="item"><div class="info"><h3>Tradicional</h3><p>Solo arequipe</p></div><div class="prices"><div class="pr"><b>$5.500</b></div></div></li><li class="item"><div class="info"><h3>La Santísima</h3><p>Arequipe y queso</p></div><div class="prices"><div class="pr"><b>$8.000</b></div></div></li><li class="item"><div class="info"><h3>El Cerro</h3><p>Arequipe y mora</p></div><div class="prices"><div class="pr"><b>$8.000</b></div></div></li><li class="item"><div class="info"><h3>La Florideña</h3><p>Arequipe, mora y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Bumanguesa</h3><p>Arequipe, maracuyá y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Sangileña</h3><p>Arequipe, fresa y queso</p></div><div class="prices"><div class="pr"><b>$10.000</b></div></div></li><li class="item"><div class="info"><h3>La Patiamarilla</h3><p>Arequipe, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$11.000</b></div></div></li><li class="item"><div class="info"><h3>La Santandereana</h3><p>Arequipe, brevas y queso</p></div><div class="prices"><div class="pr"><b>$12.000</b></div></div></li><li class="item"><div class="info"><h3>La Garrotera</h3><p>Arequipe, maracuyá, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>La Gironesa</h3><p>Arequipe, mora, chocolate y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>La Berraca</h3><p>Arequipe, mora, queso y chantilly</p></div><div class="prices"><div class="pr"><b>$13.000</b></div></div></li><li class="item"><div class="info"><h3>Oblea cuchareable</h3><p>Arequipe, sabor a elección (mora, maracuyá o fresa), queso, chantilly y trozos de oblea.</p></div><div class="prices"><div class="pr"><b>$14.000</b></div></div></li></ul><div class="build"><h4>Arma tu oblea a tu gusto</h4><p>Base: <b>Arequipe</b></p><ul class="chips "><li>Mora</li><li>Maracuyá</li><li>Fresa</li><li>Queso</li><li>Chantilly</li><li>Chocolate</li></ul></div></section>
 </div></main>
 <section class="wine closing pad" aria-label="Cierre"><p>Precios en pesos colombianos (COP)</p></section>
+</body>
+</html>
